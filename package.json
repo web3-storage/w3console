@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@w3ui/react-keyring": "^1.0.0",
+    "@w3ui/react-uploader": "^2.1.1",
+    "@w3ui/react-uploads-list": "^1.1.1",
     "next": "12.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
