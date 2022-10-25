@@ -35,7 +35,7 @@ export default function Authenticator({ children }) {
             <div className='w-full h-screen flex justify-center items-center'>
                 <div className='mb-8'>
                     <label htmlFor='email' className='block mb-2'>Email address:</label>
-                    <input id='email' className='rounded block p-2 w-72 bg-gray-900' type='email' value={email} onChange={e => setEmail(e.target.value)} placeholder="email@someplace.com" required />
+                    <input id='email' className='rounded block p-2 w-72 bg-gray-300 dark:bg-gray-900' type='email' value={email} onChange={e => setEmail(e.target.value)} placeholder="email@someplace.com" required />
                     <button type='submit' className='rounded px-2 py-1 bg-orange-300 text-black mt-4 w-full'>Register</button>
                 </div>
             </div>

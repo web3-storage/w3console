@@ -3,15 +3,6 @@ import { Fragment, useState, useEffect } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import {
   Bars3Icon,
-  CalendarIcon,
-  ChartBarIcon,
-  FolderIcon,
-  ArrowLeftOnRectangleIcon,
-  HomeIcon,
-  InboxIcon,
-  UserCircleIcon,
-  UsersIcon,
-  LockClosedIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { useUploader } from '@w3ui/react-uploader'
@@ -20,6 +11,7 @@ import { Uploader } from '../components/Uploader'
 import Authenticator from '../components/Authenticator'
 import Sidebar from '../components/Sidebar'
 import { UploadsList } from '../components/UploadsList'
+import { Toaster } from 'react-hot-toast';
 
 export default function Home() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -99,7 +91,7 @@ export default function Home() {
                       </div>
                     </Transition.Child>
                     <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4 text-gray-900 dark:text-white">
-                      <Sidebar/>
+                      <Sidebar />
                     </div>
                   </Dialog.Panel>
                 </Transition.Child>
@@ -110,7 +102,7 @@ export default function Home() {
 
           {/* Static sidebar for desktop */}
           <div className="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
-            <Sidebar/>
+            <Sidebar />
           </div>
           <div className="flex flex-1 flex-col md:pl-64">
             <div className="sticky top-0 z-10 bg-white dark:bg-gray-900 pl-1 pt-1 sm:pl-3 sm:pt-3 md:hidden">
@@ -126,6 +118,7 @@ export default function Home() {
             <main className="flex-1">
               <div className="">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+
                   <Authenticator />
                   <Uploader />
                   <UploadsList />
@@ -135,6 +128,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div><Toaster /></div>
     </div>
   )
 }

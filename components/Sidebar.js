@@ -68,7 +68,7 @@ export function Sidebar() {
                                     <UserCircleIcon className="w-8 h-8 " />
                                 </div>
                                 <div className="ml-3">
-                                    <p className="text-sm font-medium">{identity?.email}</p>
+                                    <p className="w-40 text-sm font-medium truncate">{identity?.email}</p>
                                     <p className="text-xs font-medium">Switch profile</p>
                                 </div>
                             </div>
