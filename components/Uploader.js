@@ -15,7 +15,7 @@ export function Uploader() {
     const [error, setError] = useState(null)
     const { identity, authStatus } = useAuth()
 
-    if (!uploader || !identity) return null
+    if (!uploader || authStatus !== AuthStatus.SignedIn) return null
 
     const handleUploadSubmit = async e => {
         e.preventDefault()
@@ -71,7 +71,7 @@ export function Uploader() {
                                 </span>
                             </span>
                             {allowDirectory ? (
-                                <input id='file' type='file' className="absolute left-0 top-0 w-full h-full opacity-0" webkitdirectory onChange={e => setFiles(Array.from(e.target.files))} required />
+                                <input id='file' type='file' className="absolute left-0 top-0 w-full h-full opacity-0" webkitdirectory={true} onChange={e => setFiles(Array.from(e.target.files))} required />
                             ) : (
                                 <input id='file' type='file' className="absolute left-0 top-0 w-full h-full opacity-0" multiple={true} onChange={e => setFiles(Array.from(e.target.files))} required />
                             )}
@@ -81,7 +81,7 @@ export function Uploader() {
 
                 {files.map((file, idx) => {
                     return (
-                        <div className={`rounded w-full flex justify-between p-4 ${idx % 2 === 0 ? 'bg-gray-200 dark:bg-gray-900' : undefined}`}>
+                        <div key={file.name} className={`rounded w-full flex justify-between p-4 ${idx % 2 === 0 ? 'bg-gray-200 dark:bg-gray-900' : undefined}`}>
                             <span>{file.name}</span>
                             <span>{file.type}</span>
                             <span>{file.size}</span>

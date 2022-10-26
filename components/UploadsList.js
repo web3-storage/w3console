@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useUploadsList } from '@w3ui/react-uploads-list'
+import { useAuth, AuthStatus } from '@w3ui/react-keyring'
 import { withIdentity } from './Authenticator'
 import Loading from './Loading'
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
 export function UploadsList() {
   const { loading, error, data, reload } = useUploadsList()
+  const { authStatus } = useAuth()
 
-  useEffect(() => {
-    console.log(data)
-  }, [data])
-
-  if (error) {
+  if (authStatus !== AuthStatus.SignedIn) return null
+  if (error && authStatus === AuthStatus.SignedIn) {
     return <Errored error={error} />
   }
 
@@ -46,9 +46,12 @@ export function UploadsList() {
 }
 
 const Errored = ({ error }) => (
-  <div>
-    <h1 className='near-white'>⚠️ Error: failed to list uploads: {error.message}</h1>
-    <p>Check the browser console for details.</p>
+  <div className='h-32 flex items-start p-8 bg-gray-900 rounded-md mt-5'>
+    <ExclamationTriangleIcon className='w-8 h-8 mr-4 text-yellow-500' />
+    <div>
+      <h1 className="mb-1 text-lg">Error: failed to list uploads: {error.message}</h1>
+      <p className="opacity-70">Check the browser console for details.</p>
+    </div>
   </div>
 )
 

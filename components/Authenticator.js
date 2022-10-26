@@ -11,12 +11,16 @@ export default function Authenticator({ children }) {
 
     if (authStatus === AuthStatus.EmailVerification) {
         return (
-            <div>
-                <h1 className='near-white'>Verify your email address!</h1>
-                <p>Click the link in the email we sent to {identity && identity.email} to sign in.</p>
-                <form onSubmit={e => { e.preventDefault(); cancelRegisterAndStoreIdentity() }}>
-                    <button type='submit' className='ph3 pv2'>Cancel</button>
-                </form>
+            <div className='w-full h-screen flex justify-center items-center'>
+                <div className='mb-8'>
+                    <div>
+                        <h1 className='text-xl'>Verify your email address!</h1>
+                        <p className='pt-2 pb-4'>Click the link in the email we sent to {identity && identity.email} to sign in.</p>
+                        <form onSubmit={e => { e.preventDefault(); cancelRegisterAndStoreIdentity() }}>
+                            <button type='submit' className='flex items-center gap-2 rounded px-2 py-1 mr3 bg-gray-400 dark:bg-gray-900'>Cancel</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         )
     }

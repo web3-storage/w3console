@@ -7,18 +7,18 @@ import {
     UserCircleIcon,
     UsersIcon,
     LockClosedIcon,
-  } from '@heroicons/react/24/outline'
+} from '@heroicons/react/24/outline'
 
 const navigation = [
     { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
     { name: 'Uploads', href: '#', icon: UsersIcon, current: false },
     { name: 'Account', href: '#', icon: FolderIcon, current: false },
     { name: 'Keyring', href: '#', icon: LockClosedIcon, current: false },
-  ]
-  
-  function classNames(...classes) {
+]
+
+function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
-  }
+}
 
 export function Sidebar() {
     const { authStatus, identity, unloadIdentity } = useAuth()
@@ -83,9 +83,7 @@ export function Sidebar() {
                                     <ArrowLeftOnRectangleIcon className="w-8 h-8 " />
                                 </div>
                                 <div className="ml-3">
-                                    <form onSubmit={e => { e.preventDefault(); unloadIdentity() }}>
-                                        <button type='submit' className='text-sm font-medium'>Sign Out</button>
-                                    </form>
+                                    <button onClick={() => unloadIdentity()} className='text-sm font-medium'>Sign Out</button>
                                 </div>
                             </div>
                         </a>
