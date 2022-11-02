@@ -8,12 +8,13 @@ import {
     UsersIcon,
     LockClosedIcon,
 } from '@heroicons/react/24/outline'
+import { useRouter } from 'next/router'
 
 const navigation = [
-    { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-    { name: 'Uploads', href: '#', icon: UsersIcon, current: false },
-    { name: 'Account', href: '#', icon: FolderIcon, current: false },
-    { name: 'Keyring', href: '#', icon: LockClosedIcon, current: false },
+    { name: 'Dashboard', href: '/', icon: HomeIcon },
+    { name: 'Uploads', href: '/uploads', icon: UsersIcon },
+    { name: 'Account', href: '/account', icon: FolderIcon },
+    { name: 'Keyring', href: '/keyring', icon: LockClosedIcon },
 ]
 
 function classNames(...classes) {
@@ -22,6 +23,7 @@ function classNames(...classes) {
 
 export function Sidebar() {
     const { authStatus, identity, unloadIdentity } = useAuth()
+    const router = useRouter()
 
     return (
         <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-700" >
@@ -43,13 +45,13 @@ export function Sidebar() {
                             key={item.name}
                             href={item.href}
                             className={classNames(
-                                item.current ? ' text-gray-900 dark:text-white' : 'text-gray-600 hover:text-gray-900 dark:hover:text-white',
+                                router.asPath === item.href ? ' text-gray-900 dark:text-white' : 'text-gray-600 hover:text-gray-900 dark:hover:text-white',
                                 'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
                             )}
                         >
                             <item.icon
                                 className={classNames(
-                                    item.current ? 'text-gray-900 dark:text-gray-200' : 'text-gray-400 dark:text-gray-600 group-hover:text-gray-500 dark:group-hover:text-white',
+                                    router.asPath === item.href ? 'text-gray-900 dark:text-gray-200' : 'text-gray-400 dark:text-gray-600 group-hover:text-gray-500 dark:group-hover:text-white',
                                     'mr-3 flex-shrink-0 h-6 w-6'
                                 )}
                                 aria-hidden="true"
