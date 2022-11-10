@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 export function Uploader() {
     const [{ uploadedCarChunks }, uploader] = useUploader()
     const [files, setFiles] = useState([])
-    const [allowDirectory, setAllowDirectory] = useState(false)
+    const [allowDirectory, setAllowDirectory] = useState(true)
     const [wrapInDirectory, setWrapInDirectory] = useState(false)
     const [dataCid, setDataCid] = useState('')
     const [status, setStatus] = useState('')
@@ -92,7 +92,7 @@ export function Uploader() {
                 <div className="flex justify-start gap-8 mt-6">
                     <div className='mb3'>
                         <label>
-                            <input className="bg-gray-50" type='checkbox' value={allowDirectory} onChange={e => setAllowDirectory(e.target.checked)} /> Allow directory selection
+                            <input className="bg-gray-50" type='checkbox' defaultChecked={allowDirectory} value={allowDirectory} onChange={e => setAllowDirectory(e.target.checked)} /> Allow directory selection
                         </label>
                     </div>
                     {files.length === 1
