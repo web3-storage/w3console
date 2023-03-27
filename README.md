@@ -1,4 +1,4 @@
-** this has moved to https://github.com/web3-storage/w3ui/tree/main/examples/react/w3console for now **
+**this has moved to https://github.com/web3-storage/w3ui/tree/main/examples/react/w3console for now**
 
 ## Getting Started
 
