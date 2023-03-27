@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+** this has moved to https://github.com/web3-storage/w3ui/tree/main/examples/react/w3console for now **
 
 ## Getting Started
 
